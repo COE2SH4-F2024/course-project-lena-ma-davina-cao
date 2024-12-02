@@ -22,8 +22,6 @@ void LoopDelay(void);
 void CleanUp(void);
 
 //global:
-objPos board;
-objPos itemBin;
 objPos *player;
 
 GameMechs *game;
@@ -53,6 +51,7 @@ void Initialize(void)
 
     exitFlag = false;
     
+    player = new objPos();
     game = new GameMechs();
 
 }
@@ -72,14 +71,22 @@ void DrawScreen(void)
     MacUILib_clearScreen();
 
     // drawing the board out of # symbols
-    for (int r = 0; r < 20; r++){
-        for (int c = 0; c < 10; c++){
-            if (r == 0 || r == 9 || c == 0 || c == 19){
-                board.setObjPos(c, r, '#');
+    int i, j, k;
+    for (i = 0; i <= game->getBoardSizeY(); i++){
+        for (j = 0; j <= game->getBoardSizeX(); j++){
+            if (i == 0 || i == game->getBoardSizeY() || j == 0 || j == game->getBoardSizeX()){
+                MacUILib_printf("#");
+            }
+            else if (i == player->pos->y && j == player->pos->x){    //dynamic portion; print symbol at player position
+                MacUILib_printf("%c", player->symbol);
+            }
+            else{
+                    MacUILib_printf(" ");   
+                }
+
             }
         }
-    }
-
+    MacUILib_printf("\n");
 
 
 }
