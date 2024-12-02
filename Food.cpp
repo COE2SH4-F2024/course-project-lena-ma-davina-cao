@@ -3,8 +3,7 @@
 Food::Food(GameMechs* thisGMRef)
 {
     mainGameMechsRef = thisGMRef;
-
-    this-> foodPos = objPos();
+    objPos *foodPos;
 }
 
 Food::~Food()

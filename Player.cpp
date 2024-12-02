@@ -57,27 +57,36 @@ void Player::updatePlayerDir()
 
 void Player::movePlayer()
 {
+    objPos newPos;
     //Movement & wrap-around logic
     switch (myDir){
         case UP:
-            playerPosList[0].getHeadElement().pos->y--;
-            if (playerPosList[0].getHeadElement().pos->y < 1) //wrap around logic triggers when at the border(s)
-                playerPosList[0].getHeadElement().pos->y = mainGameMechsRef->getBoardSizeY() - 2;
+            newPos.setObjPos(playerPosList[0].getHeadElement().pos->x, playerPosList[0].getHeadElement().pos->y - 1, '*');
+            if (newPos.pos->y < 1) //wrap around logic triggers when at the border(s)
+                newPos.setObjPos(playerPosList[0].getHeadElement().pos->x, mainGameMechsRef->getBoardSizeY() - 2, '*');
+            playerPosList[0].insertHead(newPos);
+            playerPosList[0].removeTail();
             break;
         case DOWN:
-            playerPosList[0].getHeadElement().pos->y++;
-            if (playerPosList[0].getHeadElement().pos->y > mainGameMechsRef->getBoardSizeY() - 2)
-                playerPosList[0].getHeadElement().pos->y = 1;
+            newPos.setObjPos(playerPosList[0].getHeadElement().pos->x, playerPosList[0].getHeadElement().pos->y + 1,'*');
+            if (newPos.pos->y > mainGameMechsRef->getBoardSizeY() - 2)
+                newPos.setObjPos(playerPosList[0].getHeadElement().pos->x, 1, '*');
+            playerPosList[0].insertHead(newPos);
+            playerPosList[0].removeTail();        
             break;
         case LEFT:
-            playerPosList[0].getHeadElement().pos->x--;
-            if (playerPosList[0].getHeadElement().pos->x < 1)
-                playerPosList[0].getHeadElement().pos->x = mainGameMechsRef->getBoardSizeX() - 2;
+            newPos.setObjPos(playerPosList[0].getHeadElement().pos->x - 1, playerPosList[0].getHeadElement().pos->y, '*');
+            if (newPos.pos->x < 1)
+                newPos.setObjPos(mainGameMechsRef->getBoardSizeX() - 2, playerPosList[0].getHeadElement().pos->y, '*');
+            playerPosList[0].insertHead(newPos);
+            playerPosList[0].removeTail();        
             break;
         case RIGHT:
-            playerPosList[0].getHeadElement().pos->x++;
-            if (playerPosList[0].getHeadElement().pos->x > mainGameMechsRef->getBoardSizeX() - 2)
-                playerPosList[0].getHeadElement().pos->x = 1;
+            newPos.setObjPos(playerPosList[0].getHeadElement().pos->x + 1, playerPosList[0].getHeadElement().pos->y, '*');
+            if (newPos.pos->x > mainGameMechsRef->getBoardSizeX() - 2)
+                newPos.setObjPos(1, playerPosList[0].getHeadElement().pos->y, '*');
+            playerPosList[0].insertHead(newPos);
+            playerPosList[0].removeTail();        
             break;
         default: //triggers when user is in STOP at game start
             break; //do nothing

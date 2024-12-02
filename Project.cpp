@@ -10,6 +10,7 @@
 #include "Player.h"
 
 #include "Food.h"
+#include "objPosArrayList.h"
 
 using namespace std;
 
@@ -56,6 +57,8 @@ void Initialize(void)
     player = new Player(game);
     food = new Food(game);
 
+    food->generateFood(player->getPlayerPos()->getHeadElement());
+
 }
 
 void GetInput(void)
@@ -80,23 +83,32 @@ void RunLogic(void)
 void DrawScreen(void)
 {
     MacUILib_clearScreen();
-    MacUILib_printf("%c", game->getBoardSizeX());
     // drawing the board out of # symbols
-    for (int i = 0; i <= game->getBoardSizeY(); i++){
-        for (int j = 0; j <= game->getBoardSizeX(); j++){
+    for (int i = 0; i < game->getBoardSizeY(); i++){
+        for (int j = 0; j < game->getBoardSizeX(); j++){
             if (i == 0 || i == game->getBoardSizeY() - 1 || j == 0 || j == game->getBoardSizeX() - 1){
                 MacUILib_printf("#");
             }
-            else if (i == player->getPlayerPos().pos->y && j == player->getPlayerPos().pos->x){  //dynamic portion; print symbol at player position
-                MacUILib_printf("%c", player->getPlayerPos().getSymbol());
+            else if (i == food->getFoodPos().pos->y && j == food->getFoodPos().pos->x){
+                MacUILib_printf("*");
             }
-            else{
-                MacUILib_printf(" ");   
+            else {  
+                bool printed = false;
+                
+                for (int k = 0; k < player->getPlayerPos()->getSize(); k++){
+                    if (i == player->getPlayerPos()->getElement(k).pos->y && j == player->getPlayerPos()->getElement(k).pos->x){
+                        MacUILib_printf("%c", player->getPlayerPos()->getElement(k).symbol);
+                        printed = true;
+                        break;
+                    }
+                }
+                if (printed == false){
+                    MacUILib_printf(" ");
+                }
             }
         }
         MacUILib_printf("\n");
     }
-
     MacUILib_printf("\nCurrent score is: %d\n", game->getScore());
     MacUILib_printf("Press SPACE to Exit\n");
     MacUILib_printf("Current score is: %d\n", game->getScore());
