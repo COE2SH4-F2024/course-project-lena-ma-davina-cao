@@ -70,7 +70,6 @@ void RunLogic(void)
 void DrawScreen(void)
 {
     MacUILib_clearScreen();
-<<<<<<< HEAD
 
     // drawing the board out of # symbols
     int i, j, k;
@@ -91,8 +90,6 @@ void DrawScreen(void)
     MacUILib_printf("\n");
 
 
-=======
->>>>>>> e47af48cdd950c2711c6c3e63d9f0a2112930a66
 }
 
 void LoopDelay(void)
