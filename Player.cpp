@@ -49,34 +49,32 @@ void Player::updatePlayerDir()
 void Player::movePlayer()
 {
     // PPA3 Finite State Machine logic
-   /* 
     if (myDir != STOP){   
         if (myDir == UP){
-            if (playerPos.y <= 1){  // wraparound --> if it goes out of bounds it wraps back around
-                playerPos.y = mainGameMechsRef->boardSizeY - 1;
+            if (playerPos.pos->y <= 1){  // wraparound --> if it goes out of bounds it wraps back around
+                playerPos.pos->y = mainGameMechsRef->getBoardSizeX() - 1;
             }
-            playerPos.y--;
+            playerPos.pos->y--;
         }
         if (myDir == LEFT){
-            if (playerPos.x <= 1){
-                playerPos.x = 19;
+            if (playerPos.pos->x <= 1){
+                playerPos.pos->x = mainGameMechsRef->getBoardSizeX() - 1;
             }
-            playerPos.x--;
+            playerPos.pos->x--;
         }
         if (myDir == DOWN){
-            if (playerPos.y >= 8){
-                playerPos.y = 0;
+            if (playerPos.pos->y >= mainGameMechsRef->getBoardSizeX() - 2){
+                playerPos.pos->y = 0;
             }
-            playerPos.y++;
+            playerPos.pos->y++;
         }
         if (myDir == RIGHT){
-            if (playerPos.x >= 18){
-                playerPos.x = 0;
+            if (playerPos.pos->x >= mainGameMechsRef->getBoardSizeX() - 2){
+                playerPos.pos->x = 0;
             }
-            playerPos.x++;
+            playerPos.pos->x++;
         }
     }
-    */
 }
 // More methods to be added
 
