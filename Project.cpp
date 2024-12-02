@@ -5,6 +5,9 @@
 // library to use rand() and srand():
 #include <stdlib.h>
 
+// include game mech:
+#include "GameMechs.h"
+
 using namespace std;
 
 #define DELAY_CONST 100000
@@ -23,6 +26,7 @@ objPos board;
 objPos itemBin;
 objPos *player;
 
+GameMechs *game;
 
 int main(void)
 {
@@ -49,7 +53,7 @@ void Initialize(void)
 
     exitFlag = false;
     
-
+    game = new GameMechs();
 
 }
 
@@ -89,6 +93,11 @@ void LoopDelay(void)
 void CleanUp(void)
 {
     MacUILib_clearScreen();    
+
+    if (game){
+        delete game;
+        game = nullptr;
+    }
 
     MacUILib_uninit();
 }
