@@ -51,7 +51,6 @@ void Initialize(void)
     MacUILib_init();
     MacUILib_clearScreen();
 
-    exitFlag = false;
     
     game = new GameMechs();
 
@@ -59,29 +58,19 @@ void Initialize(void)
 
 void GetInput(void)
 {
-    
+    if (MacUILib_getChar){
+        game->setInput(MacUILib_getChar());
+    }
 }
 
 void RunLogic(void)
 {
-    
+
 }
 
 void DrawScreen(void)
 {
     MacUILib_clearScreen();
-
-    // drawing the board out of # symbols
-    for (int r = 0; r < 20; r++){
-        for (int c = 0; c < 10; c++){
-            if (r == 0 || r == 9 || c == 0 || c == 19){
-                board.setObjPos(c, r, '#');
-            }
-        }
-    }
-
-
-
 }
 
 void LoopDelay(void)
