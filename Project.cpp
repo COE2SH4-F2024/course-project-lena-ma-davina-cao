@@ -2,6 +2,9 @@
 #include "MacUILib.h"
 #include "objPos.h"
 
+// library to use rand() and srand():
+#include <stdlib.h>
+
 using namespace std;
 
 #define DELAY_CONST 100000
@@ -15,6 +18,10 @@ void DrawScreen(void);
 void LoopDelay(void);
 void CleanUp(void);
 
+//global:
+objPos board;
+objPos itemBin;
+objPos *player;
 
 
 int main(void)
@@ -41,6 +48,9 @@ void Initialize(void)
     MacUILib_clearScreen();
 
     exitFlag = false;
+    
+
+
 }
 
 void GetInput(void)
@@ -55,7 +65,19 @@ void RunLogic(void)
 
 void DrawScreen(void)
 {
-    MacUILib_clearScreen();    
+    MacUILib_clearScreen();
+
+    // drawing the board out of # symbols
+    for (int r = 0; r < 20; r++){
+        for (int c = 0; c < 10; c++){
+            if (r == 0 || r == 9 || c == 0 || c == 19){
+                board.setObjPos(c, r, '#');
+            }
+        }
+    }
+
+
+
 }
 
 void LoopDelay(void)
