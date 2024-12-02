@@ -15,6 +15,7 @@ class GameMechs
         char input;
         bool exitFlag;
         bool loseFlag;
+        bool winFlag;
         int score;
 
         int boardSizeX;
@@ -43,6 +44,8 @@ class GameMechs
         void incrementScore();
         
         // More methods should be added here
+        bool getWinFlagStatus()const;
+        void setWinFlag();
 };
 
 #endif
