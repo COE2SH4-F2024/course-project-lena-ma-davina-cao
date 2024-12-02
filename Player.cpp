@@ -27,38 +27,49 @@ void Player::updatePlayerDir()
 {
     // PPA3 input processing logic
     char input = mainGameMechsRef->getInput();
-    switch (input) {
-        case 'w': // Move up
-            myDir = UP;
-            break;
-        case 's': // Move down
-            myDir = DOWN;
-            break;
-        case 'a': // Move left
-            myDir = LEFT;
-            break;
-        case 'd': // Move right
-            myDir = RIGHT;
-            break;
-        default:  // If no valid input, stop
-            myDir = STOP;
-            break;    
+    if(input != '0')  // if not null character
+    {
+        switch(input)
+        {                      
+            case ' ':  // exit [ESC]
+                mainGameMechsRef->setExitTrue();
+                break;
+            case 'w': //up
+                if (myDir != DOWN) //conditional: can't turn 180 for any of these
+                    myDir = UP;
+                break;
+            case 's': //down
+                if (myDir != UP)
+                    myDir = DOWN;
+                break;           
+            case 'a': //left
+                if (myDir != RIGHT)
+                    myDir = LEFT;
+                break;
+            case 'd': //right
+                if (myDir != LEFT)
+                    myDir = RIGHT;
+                break;   
+            default:
+                break;
+        }
+        input = '0'; //reset to 0 so no continuous process of same char
     }
 }
 
 void Player::movePlayer()
 {
-    // PPA3 Finite State Machine logic
+    // player move + wrap
     if (myDir != STOP){   
         if (myDir == UP){
             if (playerPos.pos->y <= 1){  // wraparound --> if it goes out of bounds it wraps back around
-                playerPos.pos->y = mainGameMechsRef->getBoardSizeX() - 1;
+                playerPos.pos->y = mainGameMechsRef->getBoardSizeX() - 2;
             }
             playerPos.pos->y--;
         }
         if (myDir == LEFT){
             if (playerPos.pos->x <= 1){
-                playerPos.pos->x = mainGameMechsRef->getBoardSizeX() - 1;
+                playerPos.pos->x = mainGameMechsRef->getBoardSizeX() - 2;
             }
             playerPos.pos->x--;
         }
