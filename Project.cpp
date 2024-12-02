@@ -9,6 +9,8 @@
 #include "GameMechs.h"
 #include "Player.h"
 
+#include "Food.h"
+
 using namespace std;
 
 #define DELAY_CONST 100000
@@ -25,6 +27,7 @@ void CleanUp(void);
 //global:
 Player *player;
 GameMechs *game;
+Food *food;
 
 int main(void)
 {
@@ -51,6 +54,8 @@ void Initialize(void)
 
     game = new GameMechs();
     player = new Player(game);
+    food = new Food(game);
+
 }
 
 void GetInput(void)
@@ -125,6 +130,10 @@ void CleanUp(void)
     if (game){
         delete game;
         game = nullptr;
+    }
+    if (food){
+        delete food;
+        food = nullptr;
     }
 
     //uninit. ui

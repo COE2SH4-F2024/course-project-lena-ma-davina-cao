@@ -9,7 +9,7 @@ Food::Food(GameMechs* thisGMRef)
 
 Food::~Food()
 {
-
+    
 }
 
 void Food::generateFood(objPos blockOff)
@@ -24,4 +24,4 @@ objPos Food::getFoodPos() const
 {
     return foodPos;
 }
-*/
+
