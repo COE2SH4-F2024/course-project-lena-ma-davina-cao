@@ -24,3 +24,4 @@ objPos Food::getFoodPos() const
 {
     return foodPos;
 }
+*/

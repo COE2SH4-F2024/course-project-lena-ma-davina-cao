@@ -1,8 +1,8 @@
 #include "objPosArrayList.h"
 
-// Check lecture contents on general purpose array list construction, 
-// and modify it to support objPos array list construction.
-
+// Paste your Tested implementation here.
+// Paste your Tested implementation here.
+// Paste your Tested implementation here.
 objPosArrayList::objPosArrayList()
 {
     listSize = 0;
