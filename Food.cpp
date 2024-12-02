@@ -1,5 +1,5 @@
 #include "Food.h"
-
+/*
 Food::Food()
 {
 
@@ -19,3 +19,4 @@ objPos Food::getFoodPos() const
 {
     
 }
+*/

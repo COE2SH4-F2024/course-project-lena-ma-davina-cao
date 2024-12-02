@@ -3,18 +3,18 @@
 //default constructor
 objPos::objPos()
 {
-    pos = new Pos;
-    pos->x = 0;
-    pos->y = 0;
-    symbol = 0; //NULL
+    this->pos = new Pos;
+    this->pos->x = 0;
+    this->pos->y = 0;
+    this->symbol = 0; //NULL
 }
 //spec. constructor
 objPos::objPos(int xPos, int yPos, char sym)
 {
-    pos = new Pos;
-    pos->x = xPos;
-    pos->y = yPos;
-    symbol = sym;
+    this->pos = new Pos;
+    this->pos->x = xPos;
+    this->pos->y = yPos;
+    this->symbol = sym;
 }
 
 // Respect the rule of six / minimum four
@@ -24,10 +24,10 @@ objPos::objPos(int xPos, int yPos, char sym)
 
 //copy const.
 objPos::objPos(const objPos &o){
-    pos = new Pos;
-    pos->x = o.pos->x;
-    pos->y = o.pos->y;
-    symbol = o.symbol;
+    this->pos = new Pos;
+    this->pos->x = o.pos->x;
+    this->pos->y = o.pos->y;
+    this->symbol = o.symbol;
 }
 
 //deconstructor

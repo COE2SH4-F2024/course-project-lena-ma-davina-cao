@@ -5,9 +5,9 @@
 // Paste your Tested implementation here.
 objPosArrayList::objPosArrayList()
 {
-    listSize = 0;
-    arrayCapacity = 200; //dcheck
-    aList = new objPos[arrayCapacity];
+    this->listSize = 0;
+    this->arrayCapacity = 200; //dcheck
+    this->aList = new objPos[arrayCapacity];
 }
 
 objPosArrayList::~objPosArrayList()

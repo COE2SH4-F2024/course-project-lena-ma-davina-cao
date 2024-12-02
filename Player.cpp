@@ -2,13 +2,13 @@
 
 Player::Player(GameMechs* thisGMRef)
 {
-    mainGameMechsRef = thisGMRef;
-    myDir = STOP;
+    this->mainGameMechsRef = thisGMRef;
+    this->myDir = STOP;
 
     // more actions to be included
-    playerPos.pos->x = 10;
-    playerPos.pos->y = 5;
-    playerPos.symbol = '*';
+    this->playerPos.pos->x = 10;
+    this->playerPos.pos->y = 5;
+    this->playerPos.symbol = '*';
 }
 
 Player::~Player()
@@ -29,7 +29,7 @@ void Player::updatePlayerDir()
     char input = mainGameMechsRef->getInput();
     switch(input)
     {                      
-        case ' ':  // exit [ESC]
+        case ' ':  // exit [SPACE]
             mainGameMechsRef->setExitTrue();
             break;
         case 'w': //up
@@ -77,7 +77,7 @@ void Player::movePlayer()
             if (playerPos.pos->x > mainGameMechsRef->getBoardSizeX() - 2)
                 playerPos.pos->x = 1;
             break;
-        default: //triggers when user is in STAY at game start
+        default: //triggers when user is in STOP at game start
             break; //do nothing
     }
 }
