@@ -45,7 +45,7 @@ void Initialize(void)
 
 void GetInput(void)
 {
-   
+    
 }
 
 void RunLogic(void)
