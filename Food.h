@@ -14,8 +14,11 @@ class Food
 {
     private:
         objPos foodPos;
+        GameMechs* mainGameMechsRef;
 
     public:
+        Food(GameMechs* thisGMRef);
+        ~Food();
         void generateFood(objPos blockOff);
         objPos getFoodPos() const;
 
