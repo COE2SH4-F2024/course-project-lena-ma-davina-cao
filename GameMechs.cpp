@@ -2,28 +2,30 @@
 
 GameMechs::GameMechs()
 {
-    char input;
-    bool exitFlag = 0;
-    bool loseFlag = 0;
-    int score = 0;
+    this-> input;
+    this-> exitFlag = 0;
+    this-> loseFlag = 0;
+    this-> winFlag = 0;
+    this-> score = 0;
 
-    int boardSizeX = 30;
-    int boardSizeY = 15;
+    this-> boardSizeX = 30;
+    this-> boardSizeY = 15;
 
-    objPos food;
+    this-> food = objPos();
 }
 
 GameMechs::GameMechs(int boardX, int boardY)
 {
-    char input;
-    bool exitFlag = 0;
-    bool loseFlag = 0;
-    int score = 0;
+    this-> input;
+    this-> exitFlag = 0;
+    this-> loseFlag = 0;
+    this-> winFlag = 0;
+    this-> score = 0;
 
-    int boardSizeX = boardX;
-    int boardSizeY = boardY;
+    this-> boardSizeX = boardX;
+    this-> boardSizeY = boardY;
 
-    objPos food;
+    this->food = objPos();
 }
 
 // do you need a destructor?
@@ -90,3 +92,10 @@ void GameMechs::clearInput()
 }
 
 // More methods should be added here
+bool GameMechs::getWinFlagStatus() const {
+    return winFlag;
+}
+
+void GameMechs::setWinFlag(){
+    winFlag = true;
+}
