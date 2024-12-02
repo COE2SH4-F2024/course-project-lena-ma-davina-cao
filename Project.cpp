@@ -49,6 +49,7 @@ void Initialize(void)
     MacUILib_init();
     MacUILib_clearScreen();
 
+    exitFlag = false;
     
     player = new objPos();
     game = new GameMechs();
@@ -57,25 +58,21 @@ void Initialize(void)
 
 void GetInput(void)
 {
-    if (MacUILib_getChar){
-        game->setInput(MacUILib_getChar());
-    }
+    
 }
 
 void RunLogic(void)
 {
-
+    
 }
 
 void DrawScreen(void)
 {
     MacUILib_clearScreen();
-<<<<<<< HEAD
 
     // drawing the board out of # symbols
-    int i, j, k;
-    for (i = 0; i <= game->getBoardSizeY(); i++){
-        for (j = 0; j <= game->getBoardSizeX(); j++){
+    for (int i = 0; i <= game->getBoardSizeY(); i++){
+        for (int j = 0; j <= game->getBoardSizeX(); j++){
             if (i == 0 || i == game->getBoardSizeY() || j == 0 || j == game->getBoardSizeX()){
                 MacUILib_printf("#");
             }
@@ -87,12 +84,10 @@ void DrawScreen(void)
                 }
 
             }
-        }
-    MacUILib_printf("\n");
+        MacUILib_printf("\n");
+    }
 
 
-=======
->>>>>>> e47af48cdd950c2711c6c3e63d9f0a2112930a66
 }
 
 void LoopDelay(void)
