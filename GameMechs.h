@@ -46,7 +46,6 @@ class GameMechs
         // More methods should be added here
         bool getWinFlagStatus()const;
         void setWinFlag();
-        void incrementScore();
 };
 
 #endif
