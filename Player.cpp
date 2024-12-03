@@ -106,7 +106,6 @@ void Player::movePlayer()
 
 bool Player::checkFoodConsumption()
 {
-    return false;
     objPos headPos = playerPosList[0].getHeadElement();
     objPos foodPos = food->getFoodPos();
     if (foodPos.isPosEqual(&headPos)){

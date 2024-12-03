@@ -58,7 +58,8 @@ void Initialize(void)
     player = new Player(game, food);
 
 
-
+    //NOT WORKING
+    //food->generateFood(*player->getPlayerPos());
 }
 
 void GetInput(void)
