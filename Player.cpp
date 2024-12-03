@@ -11,7 +11,7 @@ Player::Player(GameMechs* thisGMRef, Food* thisFood)
     base.setObjPos(5,10, '*');
 
     // more actions to be included
-    this->playerPosList[0].insertHead(base);
+    playerPosList[0].insertHead(base);
 }
 
 Player::~Player()
@@ -106,11 +106,22 @@ void Player::movePlayer()
 
 bool Player::checkFoodConsumption()
 {
-    return false;
     objPos headPos = playerPosList[0].getHeadElement();
     objPos foodPos = food->getFoodPos();
     if (foodPos.isPosEqual(&headPos)){
         return true;
+    }
+    return false;
+}
+
+bool Player::checkSelfCollision(){
+    objPos headPos = playerPosList->getHeadElement();
+    objPos bodPos;
+    for (int i = 1; i < playerPosList->getSize(); i++){
+        bodPos = playerPosList->getElement(i);
+        if(headPos.isPosEqual(&bodPos)){
+            return true;
+        }
     }
     return false;
 }

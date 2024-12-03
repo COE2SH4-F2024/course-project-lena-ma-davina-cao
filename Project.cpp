@@ -16,7 +16,7 @@ using namespace std;
 
 #define DELAY_CONST 100000
 
-//exitflag previously here as global bool
+
 
 void Initialize(void);
 void GetInput(void);
@@ -58,7 +58,8 @@ void Initialize(void)
     player = new Player(game, food);
 
 
-
+    
+    //food->generateFood(*player->getPlayerPos());
 }
 
 void GetInput(void)
@@ -75,7 +76,8 @@ void RunLogic(void)
 
     if(game->getInput() == ' ')
         game->setExitTrue();
-
+    if(player->checkSelfCollision())
+        game->setLoseFlag();
     if (player->checkFoodConsumption()) {
         // Increment score and generate new food
         game->incrementScore();
