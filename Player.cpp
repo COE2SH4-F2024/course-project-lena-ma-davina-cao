@@ -109,13 +109,9 @@ void Player::movePlayer()
         
     }
     
-    playerPosList[0].insertHead(newPos);
-    if (checkFoodConsumption() != true){
-        playerPosList[0].removeTail();
-    }
 }
 // More methods to be added
-}
+
 
 bool Player::checkFoodConsumption()
 {

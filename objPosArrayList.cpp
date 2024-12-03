@@ -27,7 +27,7 @@ int objPosArrayList::getSize() const
 
 void objPosArrayList::insertHead(objPos thisPos)
 {
-    listSize++;
+    listSize--;
 
     for (int i = listSize - 1; i >= 0; i--){
         if (i > 0){

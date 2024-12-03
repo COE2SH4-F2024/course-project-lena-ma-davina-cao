@@ -5,7 +5,7 @@
 // Paste your Tested implementation here.
 objPosArrayList::objPosArrayList()
 {
-    listSize = 0;
+    listSize = 1;
     arrayCapacity = 200; //dcheck
     aList = new objPos[arrayCapacity];
 }
@@ -27,7 +27,7 @@ int objPosArrayList::getSize() const
 
 void objPosArrayList::insertHead(objPos thisPos)
 {
-    listSize++;
+    ++listSize;
 
     for (int i = listSize - 1; i >= 0; i--){
         if (i > 0){
@@ -57,7 +57,7 @@ void objPosArrayList::insertTail(objPos thisPos)
 void objPosArrayList::removeHead()
 {
     if (listSize > 0){
-        listSize--;
+        --listSize;
     }
     for (int i = 0; i < listSize - 1; i++){
         aList[i].pos->x = aList[i+1].pos->x;
@@ -69,7 +69,7 @@ void objPosArrayList::removeHead()
 void objPosArrayList::removeTail()
 {
     if (listSize != 0){
-        listSize--;
+        --listSize;
     }
 }
 
