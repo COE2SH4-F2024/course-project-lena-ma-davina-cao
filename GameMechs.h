@@ -1,17 +1,20 @@
+//define header
 #ifndef GAMEMECHS_H
 #define GAMEMECHS_H
 
 #include <cstdlib>
-#include <time.h>
+#include <time.h> //to seed time in rand
 
+//include other class headers for access
 #include "objPos.h"
 #include "objPosArrayList.h"
 
 using namespace std;
 
+//class def.
 class GameMechs
 {
-    private:
+    private: //private class members
         char input;
         bool exitFlag;
         bool loseFlag;
@@ -21,11 +24,13 @@ class GameMechs
         int boardSizeX;
         int boardSizeY;
 
-    public:
+    public: //pubic class members
+        //const. & decon.
         GameMechs();
         GameMechs(int boardX, int boardY);
-        ~GameMechs(); // is this one needed at all? Why or why not?
+        ~GameMechs(); // nothing stored on heap so technically unecessary
         
+        //methods
         bool getExitFlagStatus() const; 
         void setExitTrue();
         bool getLoseFlagStatus() const;

@@ -178,6 +178,6 @@ void CleanUp(void)
     game->~GameMechs();
     food->~Food();
 
-    //uninit. ui
+    //uninit. ui //NOT WORKING?
     MacUILib_uninit();
 }

@@ -1,40 +1,37 @@
+//define header file
 #ifndef PLAYER_H
 #define PLAYER_H
 
+//include necessary header files for use
 #include "GameMechs.h"
 #include "objPos.h"
 #include "objPosArrayList.h"
 #include "Food.h"
 
+//class def.
 class Player
 {
-    // Construct the remaining declaration from the project manual.
-
-    // Only some sample members are included here
-
-    // You will include more data members and member functions to complete your design.
-
-    
-    public:
+    public: //public class members
         enum Dir {UP, DOWN, LEFT, RIGHT, STOP};  // This is the direction state
 
+        //const. & decon.
         Player(GameMechs* thisGMRef, Food *thisfood);
         ~Player();
 
-        objPosArrayList* getPlayerPos() const; // Upgrade this in iteration 3.       
+        //member functions (methods)
+        objPosArrayList* getPlayerPos() const;        
         void updatePlayerDir();
         void movePlayer();
 
         // More methods to be added here
         bool checkFoodConsumption();
         bool checkSelfCollision();
-        void increasePlayerLength();
+        void increasePlayerLength(); //check
 
-    private:
-        objPosArrayList* playerPosList; // Upgrade this in iteration 3.       
+    private: //priv. class members
+        objPosArrayList* playerPosList;      
         enum Dir myDir;
-        // Need a reference to the Main Game Mechanisms
-        GameMechs* mainGameMechsRef;
+        GameMechs* mainGameMechsRef; //ref to main game mech.
         Food* food;
 };
 

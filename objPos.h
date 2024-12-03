@@ -1,3 +1,4 @@
+//define header file
 #ifndef OBJPOS_H
 #define OBJPOS_H
 
@@ -8,12 +9,15 @@ typedef struct
     int y;
 } Pos;
 
+
+//class def.
 class objPos
 {
-    public:
+    public: //public class members
         Pos* pos;        
         char symbol;
 
+        //const. & decons.
         objPos();
         objPos(int xPos, int yPos, char sym);
         // Respect the rule of six / minimum four
@@ -21,13 +25,13 @@ class objPos
         objPos(const objPos &o);
         ~objPos();
 
+        //methods
         void setObjPos(objPos o);        
         void setObjPos(int xPos, int yPos, char sym);  
 
         objPos getObjPos() const;
         char getSymbol() const;
         char getSymbolIfPosEqual(const objPos* refPos) const;
-        
         bool isPosEqual(const objPos* refPos) const;
         
 };
