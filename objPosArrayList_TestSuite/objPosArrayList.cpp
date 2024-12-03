@@ -5,7 +5,7 @@
 // Paste your Tested implementation here.
 objPosArrayList::objPosArrayList()
 {
-    listSize = 1;
+    listSize = 0;
     arrayCapacity = 200; //dcheck
     aList = new objPos[arrayCapacity];
 }
@@ -38,7 +38,7 @@ void objPosArrayList::insertHead(objPos thisPos)
         else if (i == 0){
             aList[i].pos->x = thisPos.pos->x;
             aList[i].pos->y = thisPos.pos->y;
-            aList[i].symbol = thisPos.symbol;                
+            aList[i].symbol = thisPos.symbol;
         }
     }
 }
@@ -46,7 +46,7 @@ void objPosArrayList::insertHead(objPos thisPos)
 
 void objPosArrayList::insertTail(objPos thisPos)
 {
-    
+
     ++listSize;
 
     aList[listSize - 1].pos->x = thisPos.pos->x;
