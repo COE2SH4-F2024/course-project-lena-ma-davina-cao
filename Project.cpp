@@ -57,7 +57,8 @@ void Initialize(void)
     food = new Food(game);
     player = new Player(game, food);
 
-    food->generateFood(*player->getPlayerPos());
+
+
 }
 
 void GetInput(void)
@@ -126,15 +127,15 @@ void LoopDelay(void)
 
 void CleanUp(void)
 {
-    MacUILib_clearScreen();
+
 
     //exit/ lose messages
     if (game->getLoseFlagStatus())
-        MacUILib_printf("Oops! You lose!");
+        MacUILib_printf("\nOops! You lose!");
     if(game->getExitFlagStatus())
-        MacUILib_printf("Quitter! Better luck next time!");
+        MacUILib_printf("\nQuitter! Better luck next time!");
     if(game->getWinFlagStatus())
-        MacUILib_printf("Impressive! YOU WIN!!!");
+        MacUILib_printf("\nImpressive! YOU WIN!!!");
      
     //deallocate memory on heap
     if (player){
