@@ -68,7 +68,7 @@ void Player::movePlayer()
                 if (checkFoodConsumption() == false){
                     playerPosList[0].removeTail();
                 } else {
-                    food->generateFood(player->getPlayerPos()->getHeadElement());
+                    food->generateFood(playerPosList[0].getHeadElement().getObjPos());
                 }
                 break;
             case DOWN:
