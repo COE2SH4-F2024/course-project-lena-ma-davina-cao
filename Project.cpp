@@ -56,8 +56,8 @@ void Initialize(void)
     game = new GameMechs();
     food = new Food(game);
     player = new Player(game, food);
+    
 
-    food->generateFood(*player->getPlayerPos());
 }
 
 void GetInput(void)

@@ -10,7 +10,7 @@ Player::Player(GameMechs* thisGMRef, Food* thisFood)
     objPos base;
     base.setObjPos(5,10, '*');
 
-    this->playerPosList[0].insertHead(base);
+    this->playerPosList->insertHead(base);
 }
 
 Player::~Player()
@@ -61,48 +61,48 @@ void Player::movePlayer()
     //Movement & wrap-around logic
     switch (myDir){
         case UP:
-            newPos.setObjPos(playerPosList[0].getHeadElement().pos->x, playerPosList[0].getHeadElement().pos->y - 1, '*');
+            newPos.setObjPos(playerPosList->getHeadElement().pos->x, playerPosList->getHeadElement().pos->y - 1, '*');
             if (newPos.pos->y < 1) //wrap around logic triggers when at the border(s)
-                newPos.setObjPos(playerPosList[0].getHeadElement().pos->x, mainGameMechsRef->getBoardSizeY() - 2, '*');
+                newPos.setObjPos(playerPosList->getHeadElement().pos->x, mainGameMechsRef->getBoardSizeY() - 2, '*');
             playerPosList->insertHead(newPos);
             if (checkFoodConsumption() == true){
                 food->generateFood(*playerPosList);
             }
             else if (checkFoodConsumption() == false)
-                playerPosList[0].removeTail();
+                playerPosList->removeTail();
             break;
         case DOWN:
-            newPos.setObjPos(playerPosList[0].getHeadElement().pos->x, playerPosList[0].getHeadElement().pos->y + 1,'*');
+            newPos.setObjPos(playerPosList->getHeadElement().pos->x, playerPosList->getHeadElement().pos->y + 1,'*');
             if (newPos.pos->y > mainGameMechsRef->getBoardSizeY() - 2)
-                newPos.setObjPos(playerPosList[0].getHeadElement().pos->x, 1, '*');     
+                newPos.setObjPos(playerPosList->getHeadElement().pos->x, 1, '*');     
             playerPosList->insertHead(newPos);
             if (checkFoodConsumption() == true){
                 food->generateFood(*playerPosList);
             }
             else if (checkFoodConsumption() == false)
-                playerPosList[0].removeTail();
+                playerPosList->removeTail();
             break;
         case LEFT:
-            newPos.setObjPos(playerPosList[0].getHeadElement().pos->x - 1, playerPosList[0].getHeadElement().pos->y, '*');
+            newPos.setObjPos(playerPosList->getHeadElement().pos->x - 1, playerPosList->getHeadElement().pos->y, '*');
             if (newPos.pos->x < 1)
-                newPos.setObjPos(mainGameMechsRef->getBoardSizeX() - 2, playerPosList[0].getHeadElement().pos->y, '*');
+                newPos.setObjPos(mainGameMechsRef->getBoardSizeX() - 2, playerPosList->getHeadElement().pos->y, '*');
             playerPosList->insertHead(newPos);
             if (checkFoodConsumption() == true){
                 food->generateFood(*playerPosList);
             }
             else if (checkFoodConsumption() == false)
-                playerPosList[0].removeTail();            
+                playerPosList->removeTail();            
             break;
         case RIGHT:
-            newPos.setObjPos(playerPosList[0].getHeadElement().pos->x + 1, playerPosList[0].getHeadElement().pos->y, '*');
+            newPos.setObjPos(playerPosList->getHeadElement().pos->x + 1, playerPosList->getHeadElement().pos->y, '*');
             if (newPos.pos->x > mainGameMechsRef->getBoardSizeX() - 2)
-                newPos.setObjPos(1, playerPosList[0].getHeadElement().pos->y, '*');     
+                newPos.setObjPos(1, playerPosList->getHeadElement().pos->y, '*');     
             playerPosList->insertHead(newPos);
             if (checkFoodConsumption() == true){
                 food->generateFood(*playerPosList);
             }
             else if (checkFoodConsumption() == false)
-                playerPosList[0].removeTail();            
+                playerPosList->removeTail();            
             break;
         default: //triggers when user is in STOP at game start
             break; //do nothing
