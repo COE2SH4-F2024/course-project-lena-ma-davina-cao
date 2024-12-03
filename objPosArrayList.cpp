@@ -1,37 +1,40 @@
+//include class header
 #include "objPosArrayList.h"
 
-// Paste your Tested implementation here.
-// Paste your Tested implementation here.
-// Paste your Tested implementation here.
+//default constructor
 objPosArrayList::objPosArrayList()
 {
     listSize = 0;
-    arrayCapacity = 200; //dcheck
+    arrayCapacity = 200;
     aList = new objPos[arrayCapacity];
 }
 
+//destructor
 objPosArrayList::~objPosArrayList()
 {
     //delete
     delete[] aList;
 }
 
+//getter function for size
 int objPosArrayList::getSize() const
 {
     return listSize;
 }
 
+//insert new element into beginning of array
 void objPosArrayList::insertHead(objPos thisPos)
 {
     listSize++;
 
+    //loop through array obj. backwards
     for (int i = listSize; i >= 0; --i){
         if (i > 0){
             aList[i].pos->x = aList[i-1].pos->x;
             aList[i].pos->y = aList[i-1].pos->y;
             aList[i].symbol = aList[i-1].symbol;
         }
-        else if (i == 0){
+        else if (i == 0){ //
             aList[i].pos->x = thisPos.pos->x;
             aList[i].pos->y = thisPos.pos->y;
             aList[i].symbol = thisPos.symbol;                
@@ -39,7 +42,7 @@ void objPosArrayList::insertHead(objPos thisPos)
     }
 }
 
-
+//insert element at end of obj. array
 void objPosArrayList::insertTail(objPos thisPos)
 {
     
