@@ -10,7 +10,6 @@ Player::Player(GameMechs* thisGMRef, Food* thisFood)
     objPos base;
     base.setObjPos(5,10, '*');
 
-    // more actions to be included
     this->playerPosList[0].insertHead(base);
 }
 
@@ -88,10 +87,7 @@ void Player::movePlayer()
     }
     
     playerPosList[0].insertHead(newPos);
-    if (checkFoodConsumption() == true){
-        food->generateFood(*playerPosList);
-    }
-    else {
+    if (checkFoodConsumption() != true){
         playerPosList[0].removeTail();
     }
 }
