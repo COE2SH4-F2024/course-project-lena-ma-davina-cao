@@ -2,18 +2,18 @@
 
 objPos::objPos()
 {
-    pos = new Pos;
+    Pos* pos = new Pos;
     pos->x = 0;
     pos->y = 0;
-    symbol = 0; //NULL
+    char symbol = 0; //NULL
 }
 
 objPos::objPos(int xPos, int yPos, char sym)
 {
-    pos = new Pos;
+    Pos* pos = new Pos;
     pos->x = xPos;
     pos->y = yPos;
-    symbol = sym;
+    char symbol = sym;
 }
 
 // Respect the rule of six / minimum four
