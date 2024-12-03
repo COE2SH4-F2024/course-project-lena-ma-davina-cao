@@ -57,7 +57,7 @@ void Initialize(void)
     player = new Player(game);
     food = new Food(game);
 
-    food->generateFood(player->getPlayerPos()->getHeadElement());
+
 
 }
 
@@ -76,6 +76,11 @@ void RunLogic(void)
     if(game->getInput() == ' ')
         game->setExitTrue();
 
+    if (player->checkFoodConsumption()) {
+        // Increment score and generate new food
+        game->incrementScore();
+        food->generateFood(*player->getPlayerPos());
+    }
     //clear input after processing
     game->clearInput();
 }
@@ -102,7 +107,7 @@ void DrawScreen(void)
                         break;
                     }
                 }
-                if (printed == false){
+                if (!printed){
                     MacUILib_printf(" ");
                 }
             }
@@ -111,8 +116,6 @@ void DrawScreen(void)
     }
     MacUILib_printf("\nCurrent score is: %d\n", game->getScore());
     MacUILib_printf("Press SPACE to Exit\n");
-    MacUILib_printf("Current score is: %d\n", game->getScore());
-
 
 }
 

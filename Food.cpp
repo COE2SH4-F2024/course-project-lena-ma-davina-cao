@@ -3,20 +3,35 @@
 Food::Food(GameMechs* thisGMRef)
 {
     mainGameMechsRef = thisGMRef;
-    objPos *foodPos;
+    foodPos.pos = new Pos;
 }
 
 Food::~Food()
 {
-    
+    delete foodPos.pos;
+    foodPos.pos = nullptr;
 }
 
-void Food::generateFood(objPos blockOff)
+void Food::generateFood(objPosArrayList blockOff)
 {
+    bool overlap;
+
     do {
+        overlap = false;
+
+        // Generate random coordinates within the board bounds
         foodPos.pos->x = rand() % (mainGameMechsRef->getBoardSizeX() - 2) + 1;
         foodPos.pos->y = rand() % (mainGameMechsRef->getBoardSizeY() - 2) + 1;
-    } while (foodPos.pos->x == blockOff.pos->x && foodPos.pos->y == blockOff.pos->y);
+
+        // Check for collisions with positions in blockOffList
+        for (int i = 0; i < blockOff.getSize(); i++) {
+            const objPos& currentBlock = blockOff.getElement(i);
+            if (foodPos.pos->x == currentBlock.pos->x && foodPos.pos->y == currentBlock.pos->y) {
+                overlap = true;
+                break;
+            }
+        }
+    } while (overlap); // Retry until a non-colliding position is found
 }
 
 objPos Food::getFoodPos() const
