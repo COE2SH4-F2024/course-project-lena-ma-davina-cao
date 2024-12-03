@@ -83,14 +83,14 @@ void Player::movePlayer()
             default: //triggers when user is in STOP at game start
                 break; //do nothing
             
-        }
-        
-        playerPosList[0].insertHead(newPos);
-        if (checkFoodConsumption() == true){
-            food->generateFood(playerPosList[0].getHeadElement());
-        }
-        else {
-            playerPosList[0].removeTail();
+        }    
+        playerPosList->insertHead(newPos);
+        if (checkFoodConsumption() == false){
+            playerPosList->removeTail();
+        } 
+        else if (checkFoodConsumption() == true){
+            food->generateFood(playerPosList->getHeadElement());
+
         }
 }
 // More methods to be added
@@ -99,13 +99,8 @@ bool Player::checkFoodConsumption()
 {
     objPos headPos = playerPosList->getHeadElement();
     objPos foodPos = food->getFoodPos();
-    if (headPos.isPosEqual(&foodPos)){
+    if (foodPos.isPosEqual(&headPos)){
         return true;
     }
     return false;
-}
-
-void increasePlayerLength()
-{
-
 }

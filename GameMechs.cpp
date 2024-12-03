@@ -10,8 +10,6 @@ GameMechs::GameMechs()
 
     this-> boardSizeX = 30;
     this-> boardSizeY = 15;
-
-    this-> food = objPos();
 }
 
 GameMechs::GameMechs(int boardX, int boardY)
@@ -24,8 +22,6 @@ GameMechs::GameMechs(int boardX, int boardY)
 
     this-> boardSizeX = boardX;
     this-> boardSizeY = boardY;
-
-    this->food = objPos();
 }
 
 // do you need a destructor?
