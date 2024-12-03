@@ -5,7 +5,7 @@
 // Paste your Tested implementation here.
 objPosArrayList::objPosArrayList()
 {
-    listSize = 1;
+    listSize = 0;
     arrayCapacity = 200; //dcheck
     aList = new objPos[arrayCapacity];
 }
@@ -13,10 +13,6 @@ objPosArrayList::objPosArrayList()
 objPosArrayList::~objPosArrayList()
 {
     //delete
-    for (int i = 0; i < listSize; i++){
-        delete[] &aList[i];
-    }
-
     delete[] aList;
 }
 
@@ -29,7 +25,7 @@ void objPosArrayList::insertHead(objPos thisPos)
 {
     listSize++;
 
-    for (int i = listSize - 1; i >= 0; i--){
+    for (int i = listSize; i >= 0; --i){
         if (i > 0){
             aList[i].pos->x = aList[i-1].pos->x;
             aList[i].pos->y = aList[i-1].pos->y;

@@ -11,7 +11,7 @@ Player::Player(GameMechs* thisGMRef, Food* thisFood)
     base.setObjPos(5, 10, '*');
 
     // more actions to be included
-    playerPosList[0].insertHead(base);
+    playerPosList->insertHead(base);
 }
 
 Player::~Player()
