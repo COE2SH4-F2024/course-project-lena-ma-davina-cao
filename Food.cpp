@@ -4,6 +4,9 @@ Food::Food(GameMechs* thisGMRef)
 {
     mainGameMechsRef = thisGMRef;
     foodPos.pos = new Pos;
+
+    //seed time for more random numbers
+    srand(time(NULL));
 }
 
 Food::~Food()

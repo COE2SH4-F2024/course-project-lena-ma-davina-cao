@@ -5,7 +5,7 @@
 // Paste your Tested implementation here.
 objPosArrayList::objPosArrayList()
 {
-    listSize = 0;
+    listSize = 1;
     arrayCapacity = 200; //dcheck
     aList = new objPos[arrayCapacity];
 }
