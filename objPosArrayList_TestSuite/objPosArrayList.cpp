@@ -13,10 +13,6 @@ objPosArrayList::objPosArrayList()
 objPosArrayList::~objPosArrayList()
 {
     //delete
-    for (int i = 0; i < listSize; i++){
-        delete[] &aList[i];
-    }
-
     delete[] aList;
 }
 
@@ -27,9 +23,9 @@ int objPosArrayList::getSize() const
 
 void objPosArrayList::insertHead(objPos thisPos)
 {
-    ++listSize;
+    listSize++;
 
-    for (int i = listSize - 1; i >= 0; i--){
+    for (int i = listSize; i >= 0; --i){
         if (i > 0){
             aList[i].pos->x = aList[i-1].pos->x;
             aList[i].pos->y = aList[i-1].pos->y;
@@ -38,7 +34,7 @@ void objPosArrayList::insertHead(objPos thisPos)
         else if (i == 0){
             aList[i].pos->x = thisPos.pos->x;
             aList[i].pos->y = thisPos.pos->y;
-            aList[i].symbol = thisPos.symbol;
+            aList[i].symbol = thisPos.symbol;                
         }
     }
 }
@@ -46,7 +42,7 @@ void objPosArrayList::insertHead(objPos thisPos)
 
 void objPosArrayList::insertTail(objPos thisPos)
 {
-
+    
     ++listSize;
 
     aList[listSize - 1].pos->x = thisPos.pos->x;
@@ -57,7 +53,7 @@ void objPosArrayList::insertTail(objPos thisPos)
 void objPosArrayList::removeHead()
 {
     if (listSize > 0){
-        --listSize;
+        listSize--;
     }
     for (int i = 0; i < listSize - 1; i++){
         aList[i].pos->x = aList[i+1].pos->x;
@@ -69,7 +65,7 @@ void objPosArrayList::removeHead()
 void objPosArrayList::removeTail()
 {
     if (listSize != 0){
-        --listSize;
+        listSize--;
     }
 }
 

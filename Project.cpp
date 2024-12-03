@@ -57,6 +57,8 @@ void Initialize(void)
     food = new Food(game);
     player = new Player(game, food);
 
+    objPosArrayList* playerPos = player->getPlayerPos();
+    food->generateFood(playerPos);
 
     
     //food->generateFood(*player->getPlayerPos());
@@ -76,12 +78,14 @@ void RunLogic(void)
 
     if(game->getInput() == ' ')
         game->setExitTrue();
-    if(player->checkSelfCollision())
+    if(player->checkSelfCollision()){
         game->setLoseFlag();
+        game->setExitTrue();
+    }
     if (player->checkFoodConsumption()) {
         // Increment score and generate new food
         game->incrementScore();
-        food->generateFood(*player->getPlayerPos());
+        food->generateFood(player->getPlayerPos());
     }
     //clear input after processing
     game->clearInput();
@@ -134,7 +138,7 @@ void CleanUp(void)
     //exit/ lose messages
     if (game->getLoseFlagStatus())
         MacUILib_printf("\nOops! You lose!");
-    if(game->getExitFlagStatus())
+    else if(game->getExitFlagStatus())
         MacUILib_printf("\nQuitter! Better luck next time!");
     if(game->getWinFlagStatus())
         MacUILib_printf("\nImpressive! YOU WIN!!!");
