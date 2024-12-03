@@ -2,8 +2,9 @@
 
 Food::Food(GameMechs* thisGMRef)
 {
-    mainGameMechsRef = thisGMRef;
-    foodPos.pos = new Pos;
+    this->mainGameMechsRef = thisGMRef;
+    this->foodPos.pos = new Pos();
+    this->foodPos.symbol = '*';
 }
 
 Food::~Food()
@@ -15,9 +16,14 @@ Food::~Food()
 void Food::generateFood(objPosArrayList blockOff)
 {
     bool overlap;
+    objPos currentBlock;
 
     do {
         overlap = false;
+
+        if(foodPos.pos == nullptr){
+            foodPos.pos = new Pos();
+        }
 
         // Generate random coordinates within the board bounds
         foodPos.pos->x = rand() % (mainGameMechsRef->getBoardSizeX() - 2) + 1;
@@ -25,7 +31,7 @@ void Food::generateFood(objPosArrayList blockOff)
 
         // Check for collisions with positions in blockOffList
         for (int i = 0; i < blockOff.getSize(); i++) {
-            const objPos& currentBlock = blockOff.getElement(i);
+            currentBlock = blockOff.getElement(i);
             if (foodPos.pos->x == currentBlock.pos->x && foodPos.pos->y == currentBlock.pos->y) {
                 overlap = true;
                 break;
