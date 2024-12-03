@@ -54,8 +54,8 @@ void Initialize(void)
     MacUILib_clearScreen();
 
     game = new GameMechs();
-    player = new Player(game);
     food = new Food(game);
+    player = new Player(game, food);
 
 
 
@@ -150,6 +150,9 @@ void CleanUp(void)
         delete food;
         food = nullptr;
     }
+    player->~Player();
+    game->~GameMechs();
+    food->~Food();
 
     //uninit. ui
     MacUILib_uninit();

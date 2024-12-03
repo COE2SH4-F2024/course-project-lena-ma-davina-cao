@@ -1,10 +1,11 @@
 #include "Player.h"
 
-Player::Player(GameMechs* thisGMRef)
+Player::Player(GameMechs* thisGMRef, Food* thisFood)
 {
     this->mainGameMechsRef = thisGMRef;
     this->myDir = STOP;
     this->playerPosList = new objPosArrayList;
+    this->food = thisFood;
 
     objPos base;
     base.setObjPos(5,10, '*');
