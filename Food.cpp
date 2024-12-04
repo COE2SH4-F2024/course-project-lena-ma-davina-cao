@@ -8,7 +8,7 @@ Food::Food(GameMechs* thisGMRef)
     mainGameMechsRef = thisGMRef;
     foodPos.pos->x = 0;
     foodPos.pos->y = 0;
-    foodPos.symbol = '*';
+    foodPos.symbol = '@';
 
     //seed time for more random numbers
     srand(time(NULL));

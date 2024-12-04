@@ -115,7 +115,7 @@ void DrawScreen(void)
             }
             //check if there is food at coordinate
             else if (i == food->getFoodPos().pos->y && j == food->getFoodPos().pos->x){
-                MacUILib_printf("*");
+                MacUILib_printf("%c", food->getFoodPos().symbol);
             }
             else {  //check any part of snake body is there
                 bool printed = false; //bool to check if body has been printed
