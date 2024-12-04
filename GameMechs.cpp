@@ -32,6 +32,7 @@ GameMechs::GameMechs(int boardX, int boardY)
 // do you need a destructor? //no!
 GameMechs::~GameMechs() {  } //nothing on heap yet
 
+//METHODS:
 
 //GETTER FUNCTIONS (returns the value requested)
 bool GameMechs::getExitFlagStatus() const {return exitFlag;}
@@ -41,7 +42,6 @@ int GameMechs::getScore() const {return score;}
 int GameMechs::getBoardSizeX() const {return boardSizeX;}
 int GameMechs::getBoardSizeY() const { return boardSizeY;}
 bool GameMechs::getWinFlagStatus() const { return winFlag;}
-
 
 
 //SETTER/ MODIFYER FUNCTIONS (alters a value stored in the class)

@@ -21,10 +21,6 @@ objPos::objPos(int xPos, int yPos, char sym)
     this->symbol = sym;
 }
 
-// Respect the rule of six / minimum four
-// [TODO] Implement the missing special member functions to meet the minimum four rule
-//copy const. decon.,
-
 
 //copy const.
 objPos::objPos(const objPos &o){
@@ -39,7 +35,7 @@ objPos::objPos(const objPos &o){
 //deconstructor
 objPos::~objPos(){ delete pos;}
 
-//copy assignment
+//copy assignment op.
 objPos& objPos::operator= (const objPos &o)
 {
     if (this != nullptr)
@@ -88,7 +84,10 @@ char objPos::getSymbol() const { return symbol; }
 
 
 //check position match function
-bool objPos::isPosEqual(const objPos* refPos) const { return (refPos->pos->x == pos->x && refPos->pos->y == pos->y); }
+bool objPos::isPosEqual(const objPos* refPos) const 
+{ 
+    return (refPos->pos->x == pos->x && refPos->pos->y == pos->y); 
+}
 
 
 //return symbol if pos. match function

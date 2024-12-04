@@ -17,7 +17,6 @@ using namespace std;
 #define DELAY_CONST 100000
 
 
-
 void Initialize(void);
 void GetInput(void);
 void RunLogic(void);
@@ -32,7 +31,6 @@ Food *food;
 
 int main(void)
 {
-
     Initialize();
 
     while(!game->getExitFlagStatus())  
@@ -159,21 +157,6 @@ void CleanUp(void)
     else if(game->getExitFlagStatus())
         MacUILib_printf("\nQuitter! Better luck next time!");
 
-    //deallocate memory on heap
-    /*
-    if (player){
-        delete player;
-        player = nullptr;
-    }
-    if (game){
-        delete game;
-        game = nullptr;
-    }
-    if (food){
-        delete food;
-        food = nullptr;
-    }
-    */
 
     //call deconstructor for contructors to deallocate memory in constr.
     player->~Player();
