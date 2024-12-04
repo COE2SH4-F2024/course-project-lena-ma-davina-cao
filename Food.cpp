@@ -1,12 +1,11 @@
 //include header file
 #include "Food.h"
 
-//constructor
+//default constructor
 Food::Food(GameMechs* thisGMRef)
 {
     //def. & init. of default values & passed values
     mainGameMechsRef = thisGMRef;
-    foodPos.pos = new Pos;
     foodPos.pos->x = 0;
     foodPos.pos->y = 0;
     foodPos.symbol = '*';
@@ -15,11 +14,29 @@ Food::Food(GameMechs* thisGMRef)
     srand(time(NULL));
 }
 
+//copy constructor
+Food::Food(const Food &f, GameMechs* thisGMRef){
+    mainGameMechsRef = thisGMRef;
+    foodPos.pos->x = f.foodPos.pos->x;
+    foodPos.pos->y = f.foodPos.pos->y;
+    foodPos.symbol = f.foodPos.symbol;
+    
+}
+
+//copy assignment
+Food& Food::operator= (const Food &f){
+    if (this != nullptr){
+        foodPos.pos->x = f.foodPos.pos->x;
+        foodPos.pos->y = f.foodPos.pos->y;
+        foodPos.symbol = f.foodPos.symbol;
+    }
+    return *this;
+}
+
 //destructor
 Food::~Food()
 {
-    delete foodPos.pos;
-    foodPos.pos = nullptr;
+
 }
 
 //generate food using blocked position passed into func.

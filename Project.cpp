@@ -160,6 +160,7 @@ void CleanUp(void)
         MacUILib_printf("\nQuitter! Better luck next time!");
 
     //deallocate memory on heap
+    /*
     if (player){
         delete player;
         player = nullptr;
@@ -172,12 +173,12 @@ void CleanUp(void)
         delete food;
         food = nullptr;
     }
+    */
 
     //call deconstructor for contructors to deallocate memory in constr.
     player->~Player();
-    game->~GameMechs();
     food->~Food();
-
+    game->~GameMechs();
     //uninit. ui //NOT WORKING?
     MacUILib_uninit();
 }

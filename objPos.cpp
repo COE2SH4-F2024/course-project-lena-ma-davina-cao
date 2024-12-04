@@ -37,7 +37,20 @@ objPos::objPos(const objPos &o){
 
 
 //deconstructor
-objPos::~objPos(){ delete[] pos;}
+objPos::~objPos(){ delete pos;}
+
+//copy assignment
+objPos& objPos::operator= (const objPos &o)
+{
+    if (this != nullptr)
+    {
+        this->pos = new Pos;
+        this->pos->x = o.pos->x;
+        this->pos->y = o.pos->y;
+        this->symbol = o.symbol;
+    }
+    return *this;
+}
 
 
 //setter function (in ref. to another obj)

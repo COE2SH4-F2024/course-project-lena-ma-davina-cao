@@ -5,7 +5,7 @@
 GameMechs::GameMechs()
 {
     //def. & init. with default values
-    this-> input;
+    this-> input = '\0';
     this-> exitFlag = 0;
     this-> loseFlag = 0;
     this-> winFlag = 0;
@@ -30,10 +30,7 @@ GameMechs::GameMechs(int boardX, int boardY)
 }
 
 // do you need a destructor? //no!
-GameMechs::~GameMechs()
-{
-    //nothing on heap yet
-}
+GameMechs::~GameMechs() {  } //nothing on heap yet
 
 
 //GETTER FUNCTIONS (returns the value requested)

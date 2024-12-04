@@ -14,7 +14,7 @@ objPosArrayList::objPosArrayList()
 //destructor
 objPosArrayList::~objPosArrayList()
 {
-    //delete memory for aList
+    // delete memory for aList
     delete[] aList;
 }
 

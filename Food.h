@@ -24,6 +24,11 @@ class Food
         Food(GameMechs* thisGMRef);
         ~Food();
 
+        //copy & copy assignment constructors
+        Food(const Food &f, GameMechs* thisGMRef);
+        Food& operator= (const Food &f);
+
+
         //methods
         void generateFood(objPosArrayList* blockOff);
         objPos getFoodPos() const;
